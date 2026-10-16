@@ -57,9 +57,11 @@ Build the upload package:
 
 That writes `dist/lane-<version>.zip`. The zip contains only the extension. It does not include tests, the README, or the store screenshots.
 
+A push to `main` runs [`.github/workflows/release.yml`](.github/workflows/release.yml). It reads the version from `manifest.json`, builds that zip, and publishes a GitHub release tagged `v<version>` with the zip attached. If that tag already exists, the workflow leaves the release alone.
+
 ## Version
 
-`manifest.json` holds the version. A git hook bumps the patch number on every commit, so the next commit after 1.0.1 is 1.0.2. The hook for this clone is installed at `.git/hooks/pre-commit`. The copy in the repository is `scripts/hooks/pre-commit`.
+`manifest.json` holds the version. A git hook bumps the patch number on every commit. The hook for this clone is installed at `.git/hooks/pre-commit`. The copy in the repository is `scripts/hooks/pre-commit`.
 
 ## Fonts
 
