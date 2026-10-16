@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Lane</title>
+  <link rel="icon" href="icons/icon32.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="sheet">
+    <header class="top">
+      <div class="brand">
+        <img class="mark" src="icons/icon48.png" alt="" width="32" height="32">
+        <div>
+          <h1>Lane</h1>
+          <p class="subtitle">Redirect, swap domains, and block pages.</p>
+        </div>
+      </div>
+      <p class="block-total" id="block-total">Blocked 0 times</p>
+    </header>
+
+    <button id="pause" class="status" type="button" aria-pressed="false">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="status-copy">
+        <span class="status-line">
+          <span id="pause-title" class="status-title">Rules are live</span>
+          <span id="pause-kicker" class="pill">On</span>
+        </span>
+        <span id="pause-detail" class="status-detail">Matching pages change on the next navigation.</span>
+      </span>
+      <span id="pause-verb" class="button secondary">Pause</span>
+    </button>
+
+    <section class="card" id="editor">
+      <h2 id="editor-title">New rule</h2>
+      <form id="rule-form" novalidate>
+        <div class="pair">
+          <fieldset>
+            <legend>Type</legend>
+            <div class="segments">
+              <label><input type="radio" name="type" value="redirect" checked><span>Redirect</span></label>
+              <label><input type="radio" name="type" value="domain"><span>Domain</span></label>
+              <label><input type="radio" name="type" value="block"><span>Block</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Match</legend>
+            <div class="segments">
+              <label><input type="radio" name="match" value="exact" checked><span>Exact</span></label>
+              <label><input type="radio" name="match" value="wildcard"><span>Wildcard</span></label>
+              <label><input type="radio" name="match" value="regex"><span>Regex</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <fieldset id="scope-field" hidden>
+          <legend>Scope</legend>
+          <div class="segments two">
+            <label><input type="radio" name="scope" value="url" checked><span>Page</span></label>
+            <label><input type="radio" name="scope" value="domain"><span>Domain</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label id="pattern-label" for="pattern">URL</label>
+          <input id="pattern" class="input mono" type="text" spellcheck="false" autocomplete="off" aria-describedby="hint">
+          <p id="hint" class="hint"></p>
+        </div>
+
+        <div class="field" id="destination-field">
+          <label id="destination-label" for="destination">Send to</label>
+          <input id="destination" class="input mono" type="text" spellcheck="false" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="rule-name">Name <span class="optional">Optional</span></label>
+          <input id="rule-name" class="input" type="text" maxlength="80" autocomplete="off" placeholder="Old Twitter">
+        </div>
+
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+
+        <div class="form-actions">
+          <button class="button primary" id="save" type="submit">Add rule</button>
+          <button class="button ghost" id="cancel" type="button" hidden>Cancel</button>
+        </div>
+      </form>
+      <p class="note">Lane can’t change chrome:// pages or the Chrome Web Store. Rules apply to the page itself, not the images and scripts inside it.</p>
+    </section>
+
+    <section class="card">
+      <h2>Try a URL</h2>
+      <div class="field">
+        <label for="probe">Address</label>
+        <input id="probe" class="input mono" type="text" inputmode="url" spellcheck="false" autocomplete="off" placeholder="https://twitter.com/home">
+      </div>
+      <p id="probe-result" class="probe-result" data-status="idle" aria-live="polite">Type a URL to see which rule wins.</p>
+      <p class="note">Regex preview runs in JavaScript. Chrome applies RE2, which has no lookahead or lookbehind.</p>
+    </section>
+
+    <section class="card list-card">
+      <div class="card-head">
+        <h2 id="list-title">Rules</h2>
+        <p class="note">The top rule wins when several match.</p>
+      </div>
+      <ol id="list"></ol>
+    </section>
+  </main>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Lane</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <img src="icons/icon32.png" alt="" width="20" height="20">
+    <h1>Lane</h1>
+  </header>
+
+  <button id="pause" class="status" type="button" aria-pressed="false">
+    <span class="dot" aria-hidden="true"></span>
+    <span class="status-copy">
+      <span id="pause-label" class="status-title">Rules are live</span>
+      <span id="summary" class="status-detail"></span>
+    </span>
+    <span id="pause-verb" class="button secondary">Pause</span>
+  </button>
+
+  <div class="here">
+    <div>
+      <p class="here-label">This page</p>
+      <p id="here-url" class="here-url"></p>
+    </div>
+    <p class="here-count"><strong id="here-count">0</strong> <span id="here-noun">blocks</span></p>
+  </div>
+
+  <ul class="counts">
+    <li><span>Redirects</span><strong id="count-redirect">0</strong></li>
+    <li><span>Domain swaps</span><strong id="count-domain">0</strong></li>
+    <li><span>Blocks</span><strong id="count-block">0</strong></li>
+  </ul>
+
+  <button id="open" class="button primary wide" type="button">Edit rules</button>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

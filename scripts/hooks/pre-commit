@@ -1,0 +1,4 @@
+#!/bin/sh
+root=$(git rev-parse --show-toplevel) || exit 1
+node "$root/scripts/bump-version.mjs" || exit 1
+git add -- "$root/manifest.json"

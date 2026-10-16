@@ -1,0 +1,95 @@
+body {
+  width: 300px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.top { display: flex; align-items: center; gap: 8px; }
+
+h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s ease;
+}
+
+.status:hover { border-color: var(--border-strong); }
+.status:hover .button.secondary { background: var(--surface-2); }
+
+.status-copy { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.status-title { font-weight: 600; }
+.status-detail { color: var(--text-3); font-size: 12.5px; }
+
+.status .button { height: 30px; padding: 0 10px; font-size: 12.5px; }
+
+.here {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.here-label { margin: 0; font-weight: 600; }
+.here-url {
+  margin: 2px 0 0;
+  max-width: 180px;
+  color: var(--text-3);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.here-count { margin: 0; color: var(--text-3); font-size: 12.5px; white-space: nowrap; }
+.here-count strong {
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.counts {
+  list-style: none;
+  margin: 0;
+  padding: 4px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.counts li {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0;
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+.counts li + li { border-top: 1px solid var(--border); }
+
+.counts strong {
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.wide { width: 100%; }
